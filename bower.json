@@ -1,0 +1,21 @@
+{
+    "name": "Navinator",
+    "main": "src/navinator.js",
+    "version": "0.0.1",
+    "description": "Creates a “mobile” style nav from your “desktop” style nav.",
+    "homepage": "https://github.com/gsmke/navinator",
+    "authors": [
+        "Steve Schrab <steve.schrab@gsdesign.com>"
+    ],
+    "keywords": [
+        "navigation",
+        "mobile",
+        "responsive",
+        "jquery",
+        "javascript"
+    ],
+    "license": "MIT",
+    "dependencies": {
+        "jquery": ">=1.11.0"
+    }
+}
