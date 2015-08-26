@@ -1,11 +1,12 @@
 /* global console, window, module, define, jQuery, require */
 /*
- * Navinator v0.0.1
+ * Navinator v1.0.0
  * https://github.com/gsmke/navinator
  */
 
 ;(function(factory) {
     'use strict';
+
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], factory);
     } else if (typeof exports !== 'undefined') {
@@ -15,8 +16,8 @@
     }
 
 }(function($) {
-
     'use strict';
+
     var Navinator = window.Navinator || {};
 
     Navinator = (function () {
@@ -25,26 +26,36 @@
             var _ = this;
             _.defaults = {
                 buttonElement: '#navinator-button',
+                debug: false,
                 direction: 'left',
                 minWidth: 0,
                 navZ: 'bottom',
-                pageElement: '#page-container'
+                pageElement: '#page-container',
+                subNavElement: false
             };
 
             _.options = $.extend({}, _.defaults, settings);
 
             // Navinator Globals
+            _.el = element;
             _.$navElement = $(element);
             _.$pageElement = $(_.options.pageElement);
             _.$buttonElement = $(_.options.buttonElement);
             _.navCreated = false;
+            if (_.options.subNavElement) {
+                var subNavClassOrID = _.options.subNavElement.charAt(0);
+                var subNavEl = _.options.subNavElement.substring(1);
+                _.subNav = subNavClassOrID + 'navinator-' + subNavEl;
+            } else {
+                _.subNav = _.options.subNavElement;
+            }
 
             // Check if the page wrapper and button elements are present
-            if (_.$pageElement.length === 0) {
+            if (_.$pageElement.length === 0 && _.options.debug) {
                 console.error('%cNavinator Error: pageElement doesn\'t exist', 'font-weight: bold');
-            } else if (_.$buttonElement.length === 0) {
+            } else if (_.$buttonElement.length === 0 && _.options.debug) {
                 console.error('%cNavinator Error: buttonElement doesn\'t exist', 'font-weight: bold');
-            } else {
+            } else if (_.$pageElement.length !== 0 && _.$buttonElement.length !== 0) {
                 _.init();
             }
         }
@@ -62,10 +73,10 @@
             var elementId = $el.attr('id'),
                 elementClass = $el.attr('class');
 
-            if(typeof elementId === 'string' && '' !== elementId) {
+            if (typeof elementId === 'string' && '' !== elementId) {
                 $el.attr('id', elementId.replace(/([A-Za-z0-9_.\-]+)/g, 'navinator-$1'));
             }
-            if(typeof elementClass === 'string' && '' !== elementClass) {
+            if (typeof elementClass === 'string' && '' !== elementClass) {
                 $el.attr('class', elementClass.replace(/([A-Za-z0-9_.\-]+)/g, 'navinator-$1'));
             }
         });
@@ -105,7 +116,23 @@
 
             if (!_.$pageElement.hasClass('navinator-initialized')) {
                 _.$pageElement.addClass('navinator-initialized');
-                console.log('%cNavinator Initialized!', 'font-size: 1.1em; font-weight: bold; color: green');
+                if (_.options.debug) {
+                    console.log('%cNavinator Initialized!', 'font-size: 1.1em; font-weight: bold; color: green');
+                }
+            }
+
+            // Check for sub navigation
+            if (_.subNav) {
+                $(_.subNav).hide();
+                $(_.subNav).each(function (index, element) {
+                    var $parentLink = $(element).parent();
+                    $parentLink.on('click.subNavToggle', function (ev) {
+                        ev.preventDefault();
+                        var $this = $(this);
+                        $this.toggleClass('navinator-sub-open');
+                        $(_.subNav, $this).slideToggle(1000);
+                    });
+                });
             }
 
             _.navCreated = true;
@@ -126,7 +153,9 @@
             _.$buttonElement.hide();
 
             _.$pageElement.removeClass('navinator-initialized').removeAttr('style');
-            console.log('%cNavinator Destroyed!', 'font-weight: bold; color: orange');
+            if (_.options.debug) {
+                console.log('%cNavinator Destroyed!', 'font-weight: bold; color: orange');
+            }
 
             _.navCreated = false;
         }
@@ -149,7 +178,6 @@
             .css('min-height', _.winWidths[0].winHeight);
 
         if ($('html').hasClass('navinator-open')) {
-            console.log(_.winWidths[0].openWidth);
             if (_.options.direction === 'right') {
                 _.$pageElement.css('right', -_.winWidths[0].openWidth);
             } else {
@@ -200,7 +228,6 @@
         _.$buttonElement.hide();
 
         _.resizeWindow = function () {
-
             _.updateMeasurements();
 
             // If set, minWidth shows/hides the nav based on the size of the browser
@@ -214,6 +241,12 @@
 
         // Run function on window resize
         $(window).resize(_.resizeWindow);
+
+        // Update measurements after window loads
+        $(window).load(function () {
+            _.resizeWindow();
+        });
+
         // Run function the first time
         _.resizeWindow();
 

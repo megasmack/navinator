@@ -93,15 +93,21 @@
 
 <div id="page-container">
     <a id="navinator-button" href="#"><div class="hamburger"></div></a>
-    <div class="main-nav">
+    <nav class="main-nav">
         <ul>
-            <li><a href="#" target="_blank">Navinator</a></li>
+            <li>
+                <a href="#" target="_blank">Navinator</a>
+                <ul>
+                    <li><a href="">More links</a></li>
+                    <li><a href="">And more links</a></li>
+                </ul>
+            </li>
             <li><a href="https://gsdesign.com" target="_blank">GS Design</a></li>
             <li><a href="https://github.com/gsmke" target="_blank">GS on GitHub</a></li>
             <li><a href="https://twitter.com/GS_Design" target="_blank">GS on Twitter</a></li>
             <li><a href="https://www.facebook.com/GSonFB" target="_blank">GS on Facebook</a></li>
         </ul>
-    </div>
+    </nav>
     <div class="title">
         Navinator
     </div>
@@ -133,7 +139,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="../src/navinator.js"></script>
     <script>
-        $('.main-nav').navinator();
+        $('.main-nav').navinator({debug:true});
         window.ontouchmove = function(e){
           if(e.touches.length == 1){ // Only deal with one finger
             var touch = e.touches[0]; // Get the information for finger #1

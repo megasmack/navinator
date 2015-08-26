@@ -1,7 +1,7 @@
 {
     "name": "Navinator",
     "main": "src/navinator.js",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "Creates a “mobile” style nav from your “desktop” style nav.",
     "homepage": "https://github.com/gsmke/navinator",
     "authors": [

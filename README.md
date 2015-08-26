@@ -58,13 +58,14 @@ $('#my-main-nav').navinator({
 
 Option | Type | Default | Description
 ------ | ---- | ------- | -----------
+buttonElement | string | '#navinator-button' | Defines which element to use as the toggle menu button
+debug | boolean | false | Turn debugging information on in the console
 direction | string | 'left' | Change the side of the screen the menu opens on. 'right' or 'left'
 minWidth | integer | 0 | The minimum browser width to show Navinator. If it's larger, it switches back to your initially defined Nav. By default, there is no minimum width and Navinator is always shown.
 pageElement | string | '#page-container' | Defines which element to use as the page wrapper
-buttonElement | string | '#navinator-button' | Defines which element to use as the toggle menu button
+subNavElement | string | false | Defines an optional class for sub navigation
 
 #### TODO
 
 - reset or resize open nav on window resize
 - add touch/swipe support
-- multi-level navigation
