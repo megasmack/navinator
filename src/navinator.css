@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    overflow-x: hidden;
 }
 .navinator-initialized {
     box-shadow: 0 0 16px 4px rgba(0, 0, 0, 0.5);
