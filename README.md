@@ -55,6 +55,25 @@ $('#my-main-nav').navinator({
 });
  ```
 
+ In which your HTML might look like this:
+
+ ```html
+ <nav class="main-nav">
+  <ul>
+    <li>
+      <a href="#">Navinator</a>
+      <ul class="sub-nav">
+        <li><a href="http://www.penny-arcade.com/" target="_blank">More links</a></li>
+        <li><a href="http://www.tabletitans.com/" target="_blank">And more links</a></li>
+      </ul>
+    </li>
+    <li><a href="https://gsdesign.com" target="_blank">GS</a></li>
+    <li><a href="https://github.com/gsmke" target="_blank">GS on GitHub</a></li>
+    <li><a href="https://twitter.com/GS_Design" target="_blank">GS on Twitter</a></li>
+    <li><a href="https://www.facebook.com/GSonFB" target="_blank">GS on Facebook</a></li>
+  </ul>
+ </nav>
+
 #### Options
 
 Option | Type | Default | Description
