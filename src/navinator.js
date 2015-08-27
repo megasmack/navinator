@@ -41,12 +41,11 @@
             _.$pageElement = $(_.options.pageElement);
             _.$buttonElement = $(_.options.buttonElement);
             _.navCreated = false;
+            _.subNav = false;
             if (_.options.subNavElement) {
                 var subNavClassOrID = _.options.subNavElement.charAt(0);
                 var subNavEl = _.options.subNavElement.substring(1);
                 _.subNav = subNavClassOrID + 'navinator-' + subNavEl;
-            } else {
-                _.subNav = _.options.subNavElement;
             }
 
             // Check if the page wrapper and button elements are present
