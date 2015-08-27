@@ -47,10 +47,11 @@ You can also set different options like so:
 
 ```javascript
 $('#my-main-nav').navinator({
-	direction: 'right',
-	minWidth: 768,
-	pageElement: '.my-page-wrapper',
-	buttonElement: '.my-button'
+  direction: 'right',
+  minWidth: 768,
+  pageElement: '.my-page-wrapper',
+  buttonElement: '.my-button',
+  subNavElement: '.my-sub-nav'
 });
  ```
 

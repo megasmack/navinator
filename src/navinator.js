@@ -1,6 +1,6 @@
 /* global console, window, module, define, jQuery, require */
 /*
- * Navinator v1.0.0
+ * Navinator v0.1.0
  * https://github.com/gsmke/navinator
  */
 
@@ -29,7 +29,6 @@
                 debug: false,
                 direction: 'left',
                 minWidth: 0,
-                navZ: 'bottom',
                 pageElement: '#page-container',
                 subNavElement: false
             };
@@ -98,12 +97,6 @@
                 _.$pageElement.css('right', 0);
             } else {
                 _.$pageElement.css('left', 0);
-            }
-
-            if (_.options.navZ === 'top') {
-                $('#navinator-menu').addClass('navinator-z-top');
-            } else {
-                $('#navinator-menu').addClass('navinator-z-bottom');
             }
 
             _.$buttonElement.click(function (ev) {
