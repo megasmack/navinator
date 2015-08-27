@@ -41,9 +41,35 @@
         .navinator-main-nav {
             margin: 4px 20px 4px 70px;
         }
-        .navinator-main-nav li {
+        .navinator-main-nav a {
+            display: block;
             padding: 6px;
             border-bottom: 1px solid #090;
+        }
+        .navinator-main-nav .navinator-sub-nav {
+            border-bottom: 1px solid #090;
+            padding: 4px 0;
+            background: rgba(0,0,0,0.3);
+        }
+        .navinator-sub-nav a {
+            padding: 4px 6px 4px 20px;
+            border: 0;
+        }
+        .navinator-has-subnav a:after {
+            content: '';
+            float: right;
+            display: block;
+            margin-top: 6px;
+            border: 6px solid transparent;
+            border-top: 6px solid #afa;
+        }
+        .navinator-sub-open.navinator-has-subnav a:after {
+            margin-top: 0;
+            border: 6px solid transparent;
+            border-bottom: 6px solid #afa;
+        }
+        .navinator-has-subnav .navinator-sub-nav a:after {
+            display: none;
         }
         #navinator-button {
             position: absolute;
@@ -96,13 +122,13 @@
     <nav class="main-nav">
         <ul>
             <li>
-                <a href="#" target="_blank">Navinator</a>
-                <ul>
-                    <li><a href="">More links</a></li>
-                    <li><a href="">And more links</a></li>
+                <a href="#">Navinator</a>
+                <ul class="sub-nav">
+                    <li><a href="http://www.penny-arcade.com/" target="_blank">More links</a></li>
+                    <li><a href="http://www.tabletitans.com/" target="_blank">And more links</a></li>
                 </ul>
             </li>
-            <li><a href="https://gsdesign.com" target="_blank">GS Design</a></li>
+            <li><a href="https://gsdesign.com" target="_blank">GS</a></li>
             <li><a href="https://github.com/gsmke" target="_blank">GS on GitHub</a></li>
             <li><a href="https://twitter.com/GS_Design" target="_blank">GS on Twitter</a></li>
             <li><a href="https://www.facebook.com/GSonFB" target="_blank">GS on Facebook</a></li>
@@ -139,7 +165,10 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="../src/navinator.js"></script>
     <script>
-        $('.main-nav').navinator({debug:true});
+        $('.main-nav').navinator({
+            debug:true,
+            subNavElement: '.sub-nav'
+        });
         window.ontouchmove = function(e){
           if(e.touches.length == 1){ // Only deal with one finger
             var touch = e.touches[0]; // Get the information for finger #1

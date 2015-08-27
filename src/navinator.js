@@ -118,12 +118,14 @@
             if (_.subNav) {
                 $(_.subNav).hide();
                 $(_.subNav).each(function (index, element) {
-                    var $parentLink = $(element).parent();
+                    var $parentLink = $(element).prev();
+                    var $parentEl = $(this).parent();
+                    $parentEl.addClass('navinator-has-subnav');
                     $parentLink.on('click.subNavToggle', function (ev) {
                         ev.preventDefault();
-                        var $this = $(this);
-                        $this.toggleClass('navinator-sub-open');
-                        $(_.subNav, $this).slideToggle(1000);
+                        var $parentEl = $(this).parent();
+                        $parentEl.toggleClass('navinator-sub-open');
+                        $(_.subNav, $parentEl).slideToggle(500);
                     });
                 });
             }
