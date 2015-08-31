@@ -109,7 +109,7 @@
             if (!_.$pageElement.hasClass('navinator-initialized')) {
                 _.$pageElement.addClass('navinator-initialized');
                 if (_.options.debug) {
-                    console.log('%cNavinator Initialized!', 'font-size: 1.1em; font-weight: bold; color: green');
+                    console.log('%cNavinator Initialized!', 'font-weight: bold; color: green');
                 }
             }
 
@@ -144,7 +144,7 @@
             $('#navinator-menu').remove();
 
             _.$navElement.show();
-            _.$buttonElement.hide();
+            _.$buttonElement.hide().unbind('click');
 
             _.$pageElement.removeClass('navinator-initialized').removeAttr('style');
             if (_.options.debug) {
