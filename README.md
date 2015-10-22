@@ -3,11 +3,11 @@ Navinator
 
 Creates a "mobile" style nav from your "desktop" style nav.
 
-#### Requires
+## Requires
 
 jQuery 1.11.0 or higher
 
-#### Example
+## Example
 
 Add the Navinator JavaScript file before the closing body tag. Add the Navinator CSS file in the head tag. The CSS is purposely minimal to make styling easy without needing to override a bunch of attributes.
 
@@ -75,7 +75,7 @@ In which your HTML might look like this:
 </nav>
 ```
 
-#### Options
+## Options
 
 Option | Type | Default | Description
 ------ | ---- | ------- | -----------

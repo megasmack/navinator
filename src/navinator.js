@@ -1,6 +1,6 @@
 /* global console, window, module, define, jQuery, require */
 /*
- * Navinator v0.1.0
+ * Navinator v1.0.0
  * https://github.com/gsmke/navinator
  */
 
