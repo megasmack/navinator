@@ -1,11 +1,11 @@
 {
     "name": "Navinator",
     "main": "src/navinator.js",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "Creates a “mobile” style nav from your “desktop” style nav.",
-    "homepage": "https://github.com/gsmke/navinator",
+    "homepage": "https://github.com/megasmack/navinator",
     "authors": [
-        "Steve Schrab <steve.schrab@gsdesign.com>"
+        "Steve Schrab <steve@megasmack.com>"
     ],
     "keywords": [
         "navigation",
